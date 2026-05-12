@@ -40,15 +40,15 @@ export function Features(_props: FeaturesProps) {
     {
       id: 'fast',
       num: '01',
-      title: t('Lightning Fast'),
+      title: t('AI coding ready'),
       desc: t(
-        'Optimized network architecture ensures millisecond response times'
+        'Connect Claude Code, Codex, editors, terminals, and agent tools through one stable endpoint'
       ),
       span: 'md:col-span-2',
       icon: <Zap className='size-4 text-blue-400' />,
       visual: (
         <div className='mt-4 grid grid-cols-3 gap-2'>
-          {['OpenAI', 'Claude', 'Gemini', 'DeepSeek', 'Qwen', 'Llama'].map(
+          {['Claude Code', 'Codex', 'OpenAI', 'Gemini', 'DeepSeek', 'Qwen'].map(
             (name) => (
               <div
                 key={name}
@@ -64,9 +64,9 @@ export function Features(_props: FeaturesProps) {
     {
       id: 'secure',
       num: '02',
-      title: t('Secure & Reliable'),
+      title: t('Key and quota control'),
       desc: t(
-        'Enterprise-grade security with comprehensive permission management'
+        'Issue keys, limit spend, assign groups, and keep every request accountable'
       ),
       span: 'md:col-span-1',
       icon: <Shield className='size-4 text-emerald-400' />,
@@ -101,13 +101,13 @@ export function Features(_props: FeaturesProps) {
     {
       id: 'global',
       num: '03',
-      title: t('Global Coverage'),
-      desc: t('Multi-region deployment for stable global access'),
+      title: t('Smart provider routing'),
+      desc: t('Route requests by model, group, weight, health, and cost policy'),
       span: 'md:col-span-1',
       icon: <Globe className='size-4 text-violet-400' />,
       visual: (
         <div className='mt-4 space-y-2'>
-          {[t('Load Balancing'), t('Rate Limiting'), t('Cost Tracking')].map(
+          {[t('Model Access'), t('Load Balancing'), t('Cost Tracking')].map(
             (step, i) => (
               <div key={step} className='flex items-center gap-2'>
                 <div
@@ -130,8 +130,8 @@ export function Features(_props: FeaturesProps) {
     {
       id: 'developer',
       num: '04',
-      title: t('Developer Friendly'),
-      desc: t('Compatible API routes for common AI application workflows'),
+      title: t('OpenAI-compatible workflows'),
+      desc: t('Keep existing SDKs and tools while switching providers behind the gateway'),
       span: 'md:col-span-2',
       icon: <Code className='size-4 text-amber-400' />,
       visual: (
@@ -158,23 +158,23 @@ export function Features(_props: FeaturesProps) {
   const additionalFeatures = [
     {
       icon: <Gauge className='size-5' strokeWidth={1.5} />,
-      title: t('High Performance'),
-      desc: t('Support for high concurrency with automatic load balancing'),
+      title: t('High availability'),
+      desc: t('Fallback routing keeps requests moving when a channel degrades'),
     },
     {
       icon: <DollarSign className='size-5' strokeWidth={1.5} />,
-      title: t('Transparent Billing'),
-      desc: t('Pay-as-you-go with real-time usage monitoring'),
+      title: t('Transparent billing'),
+      desc: t('Track token usage, costs, and balances with real-time logs'),
     },
     {
       icon: <Users className='size-5' strokeWidth={1.5} />,
       title: t('Team Collaboration'),
-      desc: t('Multi-user management with flexible permission allocation'),
+      desc: t('Manage users, groups, keys, and permissions for the whole team'),
     },
     {
       icon: <HeartHandshake className='size-5' strokeWidth={1.5} />,
-      title: t('Open Source'),
-      desc: t('Community driven, self-hosted, and extensible'),
+      title: t('Powered by new-api'),
+      desc: t('Built on the protected new-api project foundation'),
     },
   ]
 
@@ -183,12 +183,12 @@ export function Features(_props: FeaturesProps) {
       <div className='mx-auto max-w-6xl'>
         <AnimateInView className='mb-16 max-w-lg'>
           <p className='text-muted-foreground mb-3 text-xs font-medium tracking-widest uppercase'>
-            {t('Core Features')}
+            {t('AIJump Core')}
           </p>
           <h2 className='text-2xl leading-tight font-bold tracking-tight md:text-3xl'>
-            {t('Built for developers,')}
+            {t('Built for AI coding,')}
             <br />
-            {t('designed for scale')}
+            {t('ready for production traffic')}
           </h2>
         </AnimateInView>
 

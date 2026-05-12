@@ -8,9 +8,3 @@
         header_up X-Forwarded-Proto {scheme}
     }
 }
-
-http://:80 {
-    encode gzip zstd
-
-    reverse_proxy new-api:3000
-}

@@ -19,7 +19,6 @@ For commercial licensing, please contact support@quantumnous.com
 import { Link } from '@tanstack/react-router'
 import { ArrowRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import { useSystemConfig } from '@/hooks/use-system-config'
 import { Button } from '@/components/ui/button'
 import { HeroTerminalDemo } from '../hero-terminal-demo'
 
@@ -30,10 +29,9 @@ interface HeroProps {
 
 export function Hero(props: HeroProps) {
   const { t } = useTranslation()
-  const { systemName } = useSystemConfig()
 
   return (
-    <section className='relative z-10 flex flex-col items-center overflow-hidden px-6 pt-28 pb-16 md:pt-36 md:pb-24'>
+    <section className='relative z-10 flex flex-col items-center overflow-hidden px-6 pt-28 pb-16 md:pt-34 md:pb-24'>
       {/* Radial gradient background */}
       <div
         aria-hidden
@@ -52,24 +50,30 @@ export function Hero(props: HeroProps) {
         className='absolute inset-0 -z-10 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,black_20%,transparent_100%)] bg-[size:4rem_4rem] opacity-[0.08]'
       />
 
-      <div className='flex max-w-3xl flex-col items-center text-center'>
-        <h1
-          className='landing-animate-fade-up text-[clamp(2rem,5.5vw,3.5rem)] leading-[1.15] font-bold tracking-tight'
+      <div className='flex max-w-4xl flex-col items-center text-center'>
+        <div
+          className='landing-animate-fade-up border-border/60 bg-background/70 text-muted-foreground mb-5 inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-medium shadow-sm backdrop-blur'
           style={{ animationDelay: '0ms' }}
         >
-          {t('Unified API Gateway for')}
+          <span className='size-1.5 rounded-full bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.8)]' />
+          {t('AIJump · AI coding and model API gateway')}
+        </div>
+        <h1
+          className='landing-animate-fade-up text-[clamp(2.25rem,6vw,4.75rem)] leading-[1.08] font-bold tracking-tight'
+          style={{ animationDelay: '60ms' }}
+        >
+          {t('Make Claude Code, Codex,')}
           <br />
-          <span className='bg-gradient-to-r from-blue-400 via-violet-400 to-purple-500 bg-clip-text text-transparent'>
-            {t('All Your AI Models')}
+          <span className='bg-gradient-to-r from-cyan-400 via-emerald-300 to-sky-500 bg-clip-text text-transparent'>
+            {t('and every AI model flow through one gateway')}
           </span>
         </h1>
         <p
-          className='landing-animate-fade-up text-muted-foreground/80 mt-5 max-w-lg text-base leading-relaxed opacity-0 md:text-lg'
-          style={{ animationDelay: '80ms' }}
+          className='landing-animate-fade-up text-muted-foreground/85 mt-6 max-w-2xl text-base leading-relaxed opacity-0 md:text-xl'
+          style={{ animationDelay: '120ms' }}
         >
-          {systemName}{' '}
           {t(
-            'is an open-source AI API gateway for self-hosted deployments. Connect multiple upstream services, manage models, keys, quotas, logs, and routing policies in one place.'
+            'AIJump gives developers a stable, unified entry point for Claude, OpenAI, Gemini, Azure, Bedrock, and more. Manage keys, quotas, billing, logs, and routing in one clean console.'
           )}
         </p>
         <div
@@ -90,7 +94,7 @@ export function Hero(props: HeroProps) {
                 className='group rounded-lg'
                 render={<Link to='/sign-up' />}
               >
-                {t('Get Started')}
+                {t('Start with AIJump')}
                 <ArrowRight className='ml-1 size-3.5 transition-transform duration-200 group-hover:translate-x-0.5' />
               </Button>
               <Button

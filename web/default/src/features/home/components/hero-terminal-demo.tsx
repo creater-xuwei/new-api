@@ -72,14 +72,14 @@ const ACCENT_CLASSES: Record<
 const API_DEMOS: ApiDemoConfig[] = [
   {
     id: 'gpt-chat',
-    label: 'Chat',
+    label: 'Claude Code',
     method: 'POST',
     endpoint: '/v1/chat/completions',
     headers: ['"Authorization: Bearer sk-••••"'],
     request: [
-      '"model": "your-model",',
+      '"model": "claude-sonnet-4.5",',
       '"messages": [',
-      '  { "role": "user", "content": "..." }',
+      '  { "role": "user", "content": "Refactor this module" }',
       ']',
     ],
     response: [
@@ -95,11 +95,11 @@ const API_DEMOS: ApiDemoConfig[] = [
   },
   {
     id: 'responses',
-    label: 'Responses',
+    label: 'Codex',
     method: 'POST',
     endpoint: '/v1/responses',
     headers: ['"Authorization: Bearer sk-••••"'],
-    request: ['"model": "your-model",', '"input": "..."'],
+    request: ['"model": "codex-latest",', '"input": "Review this pull request"'],
     response: [
       '{',
       '  "output": [{ "type": "output_text", "text": <text> }],',
@@ -113,15 +113,15 @@ const API_DEMOS: ApiDemoConfig[] = [
   },
   {
     id: 'claude',
-    label: 'Claude',
+    label: 'Claude API',
     method: 'POST',
     endpoint: '/v1/messages',
     headers: ['"x-api-key: sk-••••"', '"anthropic-version: 2023-06-01"'],
     request: [
-      '"model": "your-model",',
+      '"model": "claude-sonnet-4.5",',
       '"max_tokens": 1024,',
       '"messages": [',
-      '  { "role": "user", "content": "..." }',
+      '  { "role": "user", "content": "Explain this stack trace" }',
       ']',
     ],
     response: [
@@ -144,7 +144,7 @@ const API_DEMOS: ApiDemoConfig[] = [
     request: [
       '"contents": [',
       '  { "role": "user",',
-      '    "parts": [{ "text": "..." }] }',
+      '    "parts": [{ "text": "Draft a migration plan" }] }',
       ']',
     ],
     response: [
@@ -444,7 +444,7 @@ function renderResponseLine(line: string, demo: ApiDemoConfig): ReactNode {
 function truncateResponse(demo: ApiDemoConfig): string {
   const map: Record<string, string> = {
     'gpt-chat': 'Chat request routed.',
-    responses: 'Response workflow ready.',
+    responses: 'Code task dispatched.',
     claude: 'Claude message routed.',
     gemini: 'Gemini request served.',
   }
