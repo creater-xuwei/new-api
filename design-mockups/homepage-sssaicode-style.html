@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AIJump homepage concept</title>
+  <style>
+    :root {
+      --bg: #070911;
+      --panel: rgba(13, 18, 34, 0.82);
+      --panel-2: rgba(19, 27, 47, 0.74);
+      --line: rgba(255, 255, 255, 0.11);
+      --text: #f5f7fb;
+      --muted: #aab5c7;
+      --cyan: #33e3ff;
+      --green: #68ffb5;
+      --amber: #ffd166;
+      --pink: #ff6bd6;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 8%, rgba(51, 227, 255, 0.18), transparent 28%),
+        radial-gradient(circle at 82% 16%, rgba(104, 255, 181, 0.14), transparent 26%),
+        linear-gradient(180deg, #080b14 0%, #060711 58%, #05060d 100%);
+      overflow: hidden;
+    }
+
+    .frame {
+      width: 1440px;
+      height: 960px;
+      position: relative;
+      padding: 28px 64px 48px;
+    }
+
+    .grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.26;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+    }
+
+    .nav {
+      position: relative;
+      z-index: 1;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid var(--line);
+      background: rgba(8, 12, 22, 0.72);
+      backdrop-filter: blur(18px);
+      border-radius: 18px;
+      padding: 0 18px 0 22px;
+      box-shadow: 0 20px 70px rgba(0,0,0,0.32);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+      font-size: 20px;
+    }
+
+    .mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: #061015;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--cyan), var(--green));
+      box-shadow: 0 0 28px rgba(51, 227, 255, 0.35);
+    }
+
+    .links {
+      display: flex;
+      gap: 28px;
+      color: #d9e2ee;
+      font-size: 15px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      height: 42px;
+      padding: 0 18px;
+      border-radius: 11px;
+      border: 1px solid var(--line);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .btn.primary {
+      color: #051017;
+      border: 0;
+      background: linear-gradient(135deg, var(--cyan), var(--green));
+      box-shadow: 0 12px 38px rgba(51,227,255,0.26);
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 520px;
+      gap: 64px;
+      padding-top: 92px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      height: 36px;
+      padding: 0 14px;
+      border: 1px solid rgba(51,227,255,0.32);
+      border-radius: 999px;
+      color: #cdfaff;
+      background: rgba(51, 227, 255, 0.08);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 18px var(--green);
+    }
+
+    h1 {
+      margin: 28px 0 22px;
+      max-width: 780px;
+      font-size: 76px;
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+
+    .grad {
+      color: transparent;
+      background: linear-gradient(100deg, #ffffff 0%, #8df7ff 48%, #8affc4 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .sub {
+      max-width: 690px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 21px;
+      line-height: 1.72;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 36px;
+    }
+
+    .hero-actions .btn {
+      height: 52px;
+      min-width: 148px;
+      font-size: 16px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 650px;
+      margin-top: 48px;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px 20px;
+      background: rgba(255,255,255,0.045);
+      backdrop-filter: blur(14px);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .terminal-wrap {
+      position: relative;
+      height: 560px;
+    }
+
+    .halo {
+      position: absolute;
+      inset: 34px 10px auto;
+      height: 420px;
+      background: linear-gradient(135deg, rgba(51,227,255,0.2), rgba(104,255,181,0.16), rgba(255,107,214,0.13));
+      filter: blur(48px);
+      border-radius: 38px;
+    }
+
+    .terminal {
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(14,19,33,0.94), rgba(9,13,24,0.92));
+      box-shadow: 0 42px 120px rgba(0,0,0,0.46);
+      overflow: hidden;
+    }
+
+    .terminal-head {
+      height: 54px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 18px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.035);
+    }
+
+    .light { width: 11px; height: 11px; border-radius: 50%; }
+    .red { background: #ff5f57; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #28c840; }
+
+    .terminal-title {
+      margin-left: 12px;
+      color: #aeb9c9;
+      font-size: 13px;
+    }
+
+    .code {
+      padding: 24px;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 15px;
+      line-height: 1.75;
+      color: #dbe7f5;
+    }
+
+    .line { display: flex; gap: 14px; }
+    .num { width: 24px; color: #526073; text-align: right; }
+    .cyan { color: #63e7ff; }
+    .green-text { color: #7dffbb; }
+    .pink { color: #ff8ee4; }
+    .amber { color: #ffd166; }
+
+    .floating-card {
+      position: absolute;
+      right: -38px;
+      bottom: 54px;
+      width: 290px;
+      border: 1px solid rgba(104,255,181,0.24);
+      border-radius: 18px;
+      padding: 18px;
+      background: rgba(8, 14, 24, 0.86);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.38);
+      backdrop-filter: blur(18px);
+    }
+
+    .badge-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      padding: 7px 9px;
+      border-radius: 9px;
+      color: #d9f7ff;
+      background: rgba(255,255,255,0.06);
+      font-size: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .bottom {
+      position: relative;
+      z-index: 1;
+      margin-top: 62px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      min-height: 118px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      background: var(--panel-2);
+      backdrop-filter: blur(14px);
+    }
+
+    .feature b {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+  </style>
+</head>
+<body>
+  <main class="frame">
+    <div class="grid"></div>
+
+    <nav class="nav">
+      <div class="brand"><div class="mark">A</div>AIJump <span style="color:#7f8da3;font-size:13px;font-weight:700;">Powered by new-api</span></div>
+      <div class="links">
+        <span>模型广场</span>
+        <span>价格</span>
+        <span>控制台</span>
+        <span>文档</span>
+      </div>
+      <div class="actions">
+        <div class="btn">登录</div>
+        <div class="btn primary">立即接入</div>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>AIJump · AI 编程与模型 API 统一网关</div>
+        <h1><span class="grad">让 Claude Code、Codex 与主流 AI 模型一路畅通</span></h1>
+        <p class="sub">为开发者和团队提供稳定的中转、统一计费、额度管理与多供应商调度能力。一个入口，连接 OpenAI、Claude、Gemini、Azure、Bedrock 等模型生态。</p>
+        <div class="hero-actions">
+          <div class="btn primary">开始使用</div>
+          <div class="btn">查看价格</div>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>40+</strong><span>上游模型供应商</span></div>
+          <div class="stat"><strong>99.9%</strong><span>网关可用性目标</span></div>
+          <div class="stat"><strong>统一</strong><span>密钥、账单、日志</span></div>
+        </div>
+      </div>
+
+      <div class="terminal-wrap">
+        <div class="halo"></div>
+        <div class="terminal">
+          <div class="terminal-head">
+            <span class="light red"></span>
+            <span class="light yellow"></span>
+            <span class="light green"></span>
+            <span class="terminal-title">AIJump gateway request · powered by new-api</span>
+          </div>
+          <div class="code">
+            <div class="line"><span class="num">1</span><span><span class="cyan">curl</span> https://api.example.com/v1/chat/completions \</span></div>
+            <div class="line"><span class="num">2</span><span>  -H <span class="green-text">"Authorization: Bearer sk-..."</span> \</span></div>
+            <div class="line"><span class="num">3</span><span>  -H <span class="green-text">"Content-Type: application/json"</span> \</span></div>
+            <div class="line"><span class="num">4</span><span>  -d <span class="amber">'{</span></span></div>
+            <div class="line"><span class="num">5</span><span>    <span class="pink">"model"</span>: <span class="green-text">"claude-sonnet-4.5"</span>,</span></div>
+            <div class="line"><span class="num">6</span><span>    <span class="pink">"messages"</span>: [{</span></div>
+            <div class="line"><span class="num">7</span><span>      <span class="pink">"role"</span>: <span class="green-text">"user"</span>,</span></div>
+            <div class="line"><span class="num">8</span><span>      <span class="pink">"content"</span>: <span class="green-text">"帮我重构这个模块"</span></span></div>
+            <div class="line"><span class="num">9</span><span>    }]</span></div>
+            <div class="line"><span class="num">10</span><span>  <span class="amber">}'</span></span></div>
+            <br />
+            <div class="line"><span class="num">11</span><span><span class="green-text">✓</span> routed to best available channel</span></div>
+            <div class="line"><span class="num">12</span><span><span class="green-text">✓</span> usage settled with unified billing</span></div>
+          </div>
+        </div>
+        <div class="floating-card">
+          <b>智能路由状态</b>
+          <div class="badge-row">
+            <span class="badge">Claude</span>
+            <span class="badge">OpenAI</span>
+            <span class="badge">Gemini</span>
+            <span class="badge">Azure</span>
+            <span class="badge">Bedrock</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom">
+      <div class="feature"><b>统一 OpenAI 协议</b><p>兼容常见 SDK 与开发工具，减少切换成本。</p></div>
+      <div class="feature"><b>多渠道容灾</b><p>按模型、分组、权重和可用性自动调度。</p></div>
+      <div class="feature"><b>团队额度管理</b><p>密钥、用户、分组、充值与用量日志集中管理。</p></div>
+      <div class="feature"><b>实时观测</b><p>请求日志、错误追踪和消费统计清晰可查。</p></div>
+    </section>
+  </main>
+</body>
+</html>
